@@ -1,0 +1,48 @@
+<main>
+    <div id="pop-up-content">
+        <p>Create a new Task for {{ user.name }}</p>
+        <form [formGroup]="form">
+            <div id="inputs-component">
+
+                <label class="input-title">Title*</label>
+                <input  id="title" 
+                    class="input-box"
+                    type="text" 
+                    placeholder="Enter the title"  
+                    [ngClass]="{'input-error-border': form.controls['title'].touched && form.controls['title'].hasError('required')}" 
+                    maxlength="50" 
+                    formControlName="title">
+                
+                <div class="inputs-footer">
+                    <small class='input-error' [ngClass]="{'active': form.controls['title'].touched && form.controls['title'].hasError('required')}">
+                        Title is required.
+                    </small>
+                    <label class="input-counter">{{ form.get('title')?.value?.length }}/50</label>
+                </div>                
+    
+                <label class="input-title">Description*</label>
+                <textarea id="description" 
+                    class="input-box"
+                    placeholder="Enter the description"
+                    maxlength="500" 
+                    [ngClass]="{'input-error-border': form.controls['description'].touched && form.controls['description'].hasError('required')}" 
+                    formControlName="description"></textarea>
+                
+                <div class="inputs-footer">
+                    <small class='input-error' [ngClass]="{'active': form.controls['description'].touched && form.controls['description'].hasError('required')}">
+                        Description is required.
+                    </small>
+                    <label class="input-counter">{{ form.get('description')?.value?.length }}/500</label>
+                </div>
+
+            </div>
+
+            <div id="buttons-component">
+                
+                <button id="confirm-bt" type="button" [disabled]="form.invalid" (click)="confirm()">Create task</button>
+                <button id="cancel-bt" type="button" (click)="cancel()">Cancel</button>
+            </div>
+        </form>  
+        
+    </div>
+</main>

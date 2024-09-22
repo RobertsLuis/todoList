@@ -1,0 +1,80 @@
+<main>
+
+    <header>
+        @if (!editing){
+            <p id="title">{{ task.title }}</p>
+        }@else {
+            <p id="title"></p>
+        }
+        <div id="commands-component">
+            <button id="edit-bt"  [ngClass]="{'active': editing}"  class="btn" (click)="editButtonOnClick()">
+                <i class="bi bi-pencil"></i>
+            </button>
+            <button id="delete-bt" class="btn" (click)="deleteButtonOnClick()">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="status-component" *ngIf="!editing">
+        <i class="bi bi-circle-fill" [ngClass]="task.status === 1 ? 'complete' : 'incomplete'"></i>
+        <span>{{ task.status === 1 ? 'Completed' : 'Pending'}}</span>
+        <div id="times-component">
+            <span>({{ task.creation_time }} -> {{ task.due_time || '-'}})</span>
+        </div>
+    </div>
+
+    @if (!editing){
+        <p id="description">{{ task.description }}</p>
+    }@else {
+        <form [formGroup]="form">    
+            <label class="input-title">Title*</label>
+                <input  id="edit-title" 
+                    class="input-box"
+                    type="text" 
+                    placeholder="Enter the title"  
+                    [ngClass]="{'input-error-border': form.controls['title'].touched && form.controls['title'].hasError('required')}" 
+                    maxlength="50" 
+                    formControlName="title">
+                
+                <div class="inputs-footer">
+                    <small class='input-error' [ngClass]="{'active': form.controls['title'].touched && form.controls['title'].hasError('required')}">
+                        Title is required.
+                    </small>
+                    <label class="input-counter">{{ form.get('title')?.value?.length }}/50</label>
+                </div>                
+    
+                <label class="input-title">Description*</label>
+                <textarea id="edit-description" 
+                    class="input-box"
+                    placeholder="Enter the description"
+                    maxlength="500" 
+                    [ngClass]="{'input-error-border': form.controls['description'].touched && form.controls['description'].hasError('required')}" 
+                    formControlName="description"></textarea>
+                
+                <div class="inputs-footer">
+                    <small class='input-error' [ngClass]="{'active': form.controls['description'].touched && form.controls['description'].hasError('required')}">
+                        Description is required.
+                    </small>
+                    <label class="input-counter">{{ form.get('description')?.value?.length }}/500</label>
+                </div>
+        </form>
+    }
+
+    <footer>
+        @if (!editing){
+            @if (task.status === 0){
+                <button id="complete-task-bt" class="btn btn-primary" (click)="completeButtonOnClick()">Complete task</button>
+            }@else {
+                <p>Task completed</p>
+            }
+        }@else{
+            <div id="edit-buttons-component">   
+                <button id="confirm-bt" type="button" [disabled]="form.invalid" (click)="confirmEditionButtonOnClick()">Confirm edition</button>
+                <button id="cancel-bt" type="button" (click)="cancelEditionButtonOnClick()">Cancel</button>
+            </div>
+        }
+    </footer>
+    
+</main>
+

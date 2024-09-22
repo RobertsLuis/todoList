@@ -1,0 +1,71 @@
+main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#pop-up-content{
+    max-width: 350px;
+    max-height: auto;
+    background: linear-gradient(
+    to bottom,
+    #450d80,
+    #2c0a4c
+    );
+    padding: 10px;
+}
+
+#pop-up-content p {
+    text-align: center;
+}
+
+#task-informations span{
+    margin-bottom: 10px;
+}
+
+#buttons-component {
+    display: flex; /* Organiza os itens em linha */
+    justify-content: flex-end; /* Título na esquerda, botão na direita */
+    align-items: center; /* Centraliza verticalmente os itens */
+    color: #ffffff; /* Texto branco */ 
+}
+
+#confirm-bt{
+    background-color: #ffffff; /* Fundo branco para contraste com o roxo */
+    color: #6a0dad; /* Texto roxo */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suave mudança de cor ao hover */
+    border: 2px solid #6a0dad; /* Borda roxa */
+}
+
+#confirm-bt:hover{
+    background-color: #6a0dad; /* Cor de fundo roxo ao passar o mouse */
+    color: #ffffff; /* Texto branco ao passar o mouse */
+}
+
+button {
+    margin-bottom: 5px; /* Espaçamento interno do botão */
+    border-radius: 12px; /* Arredondamento nos cantos */
+    cursor: pointer; /* Muda o cursor para "pointer" */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: bold; /* Deixa o texto do botão mais destacado */
+    padding: 6px 10px; 
+}
+
+#cancel-bt{
+    background-color: white;
+    color: red;
+    border: 2px solid red; /* Borda roxa */
+}
+
+#cancel-bt:hover{
+    background-color: red;
+    color: white;
+}
+

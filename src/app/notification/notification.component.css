@@ -1,0 +1,46 @@
+/* Container principal da notificação */
+.notification {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 100px;
+    background-color: #6a0dad;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 1000;
+}
+
+  
+/* Quando a notificação está visível */
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mensagem dentro da notificação */
+.notification p {
+    margin: 0;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Suaviza a transição da notificação */
+.notification.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+  

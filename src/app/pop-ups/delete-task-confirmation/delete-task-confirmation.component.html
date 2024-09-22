@@ -1,0 +1,25 @@
+<main>
+    <div id="pop-up-content">
+        <div id="task-informations">
+            <p>Are you sure you want to delete this task?</p>
+            <ul>
+                <li>
+                    <span><strong>Title:</strong> {{ taskToDelete.title }}</span>
+                </li>
+                <li>
+                    <span><strong>Description:</strong> {{ taskToDelete.description }}</span>
+                </li>
+                <li>
+                    <span><strong>Status:</strong> {{ taskToDelete.status === 1 ? 'Completed' : 'Pending'}}</span>
+                </li>
+            </ul>
+            
+        </div>
+        <div id="buttons-component">
+            <button id="confirm-bt" (click)="confirm()">Delete task</button>
+            <button id="cancel-bt" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</main>
+
+

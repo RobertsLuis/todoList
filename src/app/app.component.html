@@ -1,0 +1,30 @@
+<app-header/>
+<main>
+
+  <ul id="users">
+    <h2>Users</h2>
+  <!--*ngFor="let user of users"-->
+    @for (user of users; track user.id){
+      <li>
+        <app-user-card 
+        [user]="user"
+        (selectedSignal)="handlerUserCardSelection($event)"/>
+      </li>
+    }
+  </ul>
+  <div id="tasks">
+    <h2>Users tasks</h2>
+    @if (selectedUser){
+      <app-user-tasks [user] = "selectedUser" [tasks]="selectedUserTasks"/><!--(notification)="handlerNotifications($event)"/>-->
+    }@else {
+      <p id="fallback">Select a user first...</p>
+    }
+  </div>
+
+  <div id="notification" class="notification hidden">
+    <p>{{ notificationMessage }}</p>
+  </div>
+
+  <app-notification></app-notification>
+  <!-- <app-user-tasks [name] = "selectedUser ? selectedUser.name : 'Selecione um usuário...'"/> -->
+</main>
